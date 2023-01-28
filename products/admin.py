@@ -3,7 +3,7 @@ from .models import *
 from modeltranslation.admin import TranslationAdmin
 # Register your models here.
 @admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
+class CategoryAdmin(TranslationAdmin):
     list_display =  ['name','user']
     list_per_page = 10
     search_fields = ['name','user']
