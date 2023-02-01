@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-27 20:04+0500\n"
+"POT-Creation-Date: 2023-02-01 19:15+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,21 +17,56 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
 #: .\products\apps.py:7
 msgid "Categories and Products"
 msgstr "Kategoriyalar va Mahsulotlar"
 
-#: .\products\models.py:6
+#: .\products\models.py:7
 msgid "Category name"
 msgstr "Kategoriya nomi"
 
-#: .\products\models.py:12
+#: .\products\models.py:13
 msgid "Category "
 msgstr "Kategoriya"
 
-#: .\products\models.py:13
+#: .\products\models.py:14
 msgid "Categories "
 msgstr "Kategoriyalar"
+
+#: .\products\models.py:17
+msgid "Product name"
+msgstr "Nom"
+
+#: .\products\models.py:18
+msgid "Product image"
+msgstr "Rasm"
+
+#: .\products\models.py:19
+#, fuzzy
+#| msgid "Category "
+msgid "Choose category"
+msgstr "Kategoriya"
+
+#: .\products\models.py:20
+msgid "Product description"
+msgstr "Mahsulot haqida qisqacha"
+
+#: .\products\models.py:21
+msgid "Product price"
+msgstr "Narx"
+
+#: .\products\models.py:22
+msgid "Product discount"
+msgstr "Chegirma narx"
+
+#: .\products\models.py:27
+msgid "Product "
+msgstr "Mahsulot"
+
+#: .\products\models.py:28
+msgid "Products "
+msgstr "Mahsulotlar "
 
 #: .\project\settings.py:122
 msgid "English"

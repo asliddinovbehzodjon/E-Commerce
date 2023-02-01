@@ -175,7 +175,7 @@ JAZZMIN_SETTINGS = {
 
     # List of model admins to search from the search bar, search bar omitted if excluded
     # If you want to use a single search field you dont need to use a list, you can use a simple string
-    "search_model": ["auth.User", "products.Category"],
+    "search_model": ["auth.User", "products.Category","products.Product"],
 
     # Field name on user model that contains avatar ImageField/URLField/Charfield or a callable that receives the user
     "user_avatar": None,
@@ -194,7 +194,7 @@ JAZZMIN_SETTINGS = {
         {"name": "Support", "url": "https://t.me/Bekhzod_Asliddinov", "new_window": True},
 
         # model admin to link to (Permissions checked against model)
-        {"model": "auth.User"},
+        # {"model": "auth.User"},
 
         # App with dropdown menu to all its models pages (Permissions checked against models)
         {"app": "products"},
@@ -245,7 +245,10 @@ JAZZMIN_SETTINGS = {
         "auth": "fas fa-users-cog",
         "auth.user": "fas fa-user",
         "auth.Group": "fas fa-users",
-        "products.Category":"fas fa-list"
+        "products.Category":"fas fa-list",
+        "products.Product":"fas fa-box",
+        "products.Order":"fas fa-shopping-cart",
+        "products.OrderItem":"fas fa-shopping-basket"
     },
     # Icons that are used when one is not manually specified
     "default_icon_parents": "fas fa-chevron-circle-right",
