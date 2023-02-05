@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-01 19:15+0500\n"
+"POT-Creation-Date: 2023-02-03 18:54+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -75,3 +75,33 @@ msgstr "Inglizcha"
 #: .\project\settings.py:123
 msgid "Uzbek"
 msgstr "O'zbekcha"
+
+#: .\templates\home.html:17
+msgid "More"
+msgstr "Batafsil"
+
+#: .\templates\home.html:18
+msgid "Buy"
+msgstr "Sotib olmoq"
+
+#: .\templates\navbar.html:23
+msgid "Main"
+msgstr "Asosiy sahifa"
+
+#: .\templates\navbar.html:29
+msgid "Catalogs"
+msgstr "Kataloglar"
+
+#: .\templates\navbar.html:49
+msgid "Languages"
+msgstr "Tilni o'zgartirish"
+
+#, fuzzy
+#~| msgid "Categories "
+#~ msgid "Categories"
+#~ msgstr "Kategoriyalar"
+
+#, fuzzy
+#~| msgid "Category "
+#~ msgid "Category"
+#~ msgstr "Kategoriya"

@@ -26,6 +26,7 @@ urlpatterns = [
 urlpatterns += i18n_patterns(
     path('admin/', admin.site.urls),
     path('__debug__/', include('debug_toolbar.urls')),
+    path('',include('products.urls'))
 )
 urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 INTERNAL_IPS = [

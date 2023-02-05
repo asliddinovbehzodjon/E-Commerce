@@ -1,2 +1,3 @@
 https://github.com/jpadilla/django-project-template/blob/master/.gitignore
 https://berkaysen.me/makaleler/detay/django-model-translation
+https://getbootstrap.com/docs/5.0/getting-started/introduction/

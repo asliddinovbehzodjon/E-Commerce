@@ -16,7 +16,7 @@ class Product(models.Model):
     user = models.ForeignKey(User,on_delete=models.SET_NULL,null=True,blank=True)
     name = models.CharField(max_length=400,verbose_name=_("Product name"))
     image = models.ImageField(upload_to="product-images",verbose_name=_("Product image"))
-    category = models.ManyToManyField(Category,related_name='categories',verbose_name=_("Choose category"))
+    category = models.ManyToManyField(Category,related_name='products',verbose_name=_("Choose category"))
     description = models.TextField(verbose_name=_("Product description"))
     price = models.IntegerField(verbose_name=_("Product price"))
     discount = models.IntegerField(verbose_name=_("Product discount"),default=0)
