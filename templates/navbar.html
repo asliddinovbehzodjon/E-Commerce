@@ -49,11 +49,11 @@
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                        {% trans 'Languages' %}
                       </a>
+                      {% get_available_languages as LANGUAGES %}
+                      {% get_language_info_list for LANGUAGES  as languages %}
+                  
                       <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        {% get_available_languages as LANGUAGES %}
-                        {% get_language_info_list for LANGUAGES  as languages %}
                        
-                          
                           {% for language in languages  %}
                           <li><a class="dropdown-item" href="/{{language.code}}{{request.get_full_path|slice:'3:'}}">{{language.name_translated}}</a></li>
                           {% endfor %}
@@ -70,10 +70,15 @@
                   </ul>
                  
                   {% if request.user.is_authenticated %}
-                  <button class="nav-item btn btn-danger">{% trans 'Logout' %}</button>
+                 
+                  <a href="logout" class="nav-item mybtn btn btn-danger">{% trans 'Logout' %}</a>
                     {% else %}
-                    <button class="nav-item btn btn-primary">{% trans 'Register' %}</button>
-                    <button class="nav-item btn btn-success">{% trans 'Login' %}</button>
+                    <a href="register"
+                       class="nav-item mybtn btn btn-primary">{% trans 'Register' %}</
+                    </a>
+                    <!-- <a href="login"> -->
+                      <a href="login" class="nav-item mybtn btn btn-success">{% trans 'Login' %}</a>
+                    <!-- </a> -->
                   {% endif %}
             </form>
           </div>
@@ -91,7 +96,7 @@
         .navbar-nav{
             margin-right: 5px;
         }
-        button{
+        .mybtn{
           margin:0 10px;
           border-radius: 15px;
         }

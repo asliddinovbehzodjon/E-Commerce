@@ -14,7 +14,7 @@
             <div class="card-body">
               <h5 class="card-title"><i class="fa-brands fa-product-hunt"></i> &nbsp;{{product.name}}</h5>
               <p class="card-text"><i class="fa-solid fa-wallet"></i> &nbsp;{{product.price}} $</p>
-              <p class="card-text"><i class="fa-sharp fa-solid fa-circle-info"></i> &nbsp;{{product.description}}</p>
+              <p class="card-text"><i class="fa-sharp fa-solid fa-circle-info"></i> &nbsp;{{product.description|truncatechars:40}}</p>
               <center>
                 <span class="card-text">{% trans 'Catalogs' %}</span><br>
               </center>
@@ -37,7 +37,7 @@
       
     </div>
   </div>
-
+{% include 'pagination.html' %}
 
   <style>
     .card{

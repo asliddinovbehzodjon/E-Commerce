@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-03 18:54+0500\n"
+"POT-Creation-Date: 2023-02-06 19:19+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -76,25 +76,47 @@ msgstr "Inglizcha"
 msgid "Uzbek"
 msgstr "O'zbekcha"
 
-#: .\templates\home.html:17
-msgid "More"
-msgstr "Batafsil"
-
-#: .\templates\home.html:18
-msgid "Buy"
-msgstr "Sotib olmoq"
-
-#: .\templates\navbar.html:23
-msgid "Main"
-msgstr "Asosiy sahifa"
-
-#: .\templates\navbar.html:29
+#: .\templates\category.html:19 .\templates\home.html:20
+#: .\templates\navbar.html:30
 msgid "Catalogs"
 msgstr "Kataloglar"
 
-#: .\templates\navbar.html:49
+#: .\templates\category.html:30 .\templates\home.html:30
+msgid "More"
+msgstr "Batafsil"
+
+#: .\templates\category.html:31 .\templates\home.html:31
+#: .\templates\products.html:53
+msgid "Buy"
+msgstr "Sotib olmoq"
+
+#: .\templates\navbar.html:24
+msgid "Main"
+msgstr "Asosiy sahifa"
+
+#: .\templates\navbar.html:50
 msgid "Languages"
 msgstr "Tilni o'zgartirish"
+
+#: .\templates\navbar.html:74
+msgid "Logout"
+msgstr "Chiqish"
+
+#: .\templates\navbar.html:76
+msgid "Register"
+msgstr "Ro'yxatdan o'tish"
+
+#: .\templates\navbar.html:77
+msgid "Login"
+msgstr "Kirish"
+
+#: .\templates\pagination.html:14
+msgid "Previous"
+msgstr "Orqaga"
+
+#: .\templates\pagination.html:20
+msgid "Next"
+msgstr "Oldinga"
 
 #, fuzzy
 #~| msgid "Categories "

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}
+    {% trans 'Register' %} |{{block.super}}
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    
+    {% for message in messages  %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+    <div class="alert alert-danger" role="alert">
+       {{message}}
+      </div>
+    {% endif %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+    <div class="alert alert-warning" role="alert">
+       {{message}}
+      </div>
+    {% endif %}
+    {% endfor %}
+        
+</div>
+    <center>
+        <form method="POST" class="container form">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="username">
+            </div>
+            <div class="input-group mb-3">
+                <input type="password" class="form-control" placeholder="*****" aria-label="Username" aria-describedby="basic-addon1" name="psw1">
+            </div>
+            <div class="input-group mb-3">
+                <input type="password" class="form-control" placeholder="******" aria-label="Username" aria-describedby="basic-addon1" name="psw2">
+            </div>
+            <input type="submit" value="{% trans 'Register' %}" class="btn btn-info">
+        </form>
+    </center>
+    <style>
+        input[type='text'],input[type='password']{
+            border-radius: 10px;
+            margin: 10px;
+        }
+        .input-group{
+            width: 400px;
+           
+        }
+    </style>
+{% endblock content %}
+    

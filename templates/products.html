@@ -1,52 +1,77 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block title %}
-  
+  {{product.name}} | {{block.super}}
 {% endblock title %}
 
 {% block content %}
-<div class="container">
-  <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active" data-bs-interval="10000">
-        <img src="{{product.image.url}}" class="d-block w-50" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>{{product.name}}</h5>
-          <p>{{product.description}}</p>
-        </div>
+
+  <div class="all">
+    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
       </div>
-     
-     {% for album in albums  %}
-     <div class="carousel-item" data-bs-interval="2000">
-      <img src="{{album.image.url}}" class="d-block w-500" alt="...">
-      <div class="carousel-caption d-flex d-md-block">
-        <h5>{{product.name}}</h5>
-        <p>{{product.description}}</p>
-      
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="10000">
+          <img src="{{product.image.url}}" class="d-block w-500" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <!-- <h5>{{product.name}}</h5>
+            <p>{{product.description}}</p> -->
+          </div>
+        </div>
+       
+       {% for album in albums  %}
+       <div class="carousel-item" data-bs-interval="2000">
+        <img src="{{album.image.url}}" class="d-block w-500" alt="...">
+        <div class="carousel-caption d-flex d-md-block">
+          <!-- <h5>{{product.name}}</h5>
+          <p>{{product.description}}</p> -->
+        
+      </div>
+      </div>
+        
+       {% endfor %}
+        
+        
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
+    <div class="data-info">
+      <h4 class="text-center">{{product.name}}</h4>
+      <h6 ><u class="title">Mahsulot haqida</u>: {{product.description}}</h6>
+      <h6><u class="title">Mahsulot narxi</u>: {{product.price}} $</h6>
+      <button class="btn btn-success">
+        {% trans 'Buy' %}
+      </button>
     </div>
-      
-     {% endfor %}
-      
-      
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
   </div>
-</div>
 <style>
+  .all{
+    display: flex;
+
+  }
   .carousel{
     background-color: aliceblue;
+    border-radius: 15px;
+    margin: 18px;
+    height: 400px;
+    padding: 10px;
+    width: 50%;
+  }
+  .data-info{
+    margin: 18px;
+    height: 400px;
+    padding: 10px;
+    width: 50%;
   }
 </style>
 {% endblock content %}
