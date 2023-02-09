@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-06 19:19+0500\n"
+"POT-Creation-Date: 2023-02-08 20:19+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,53 +68,68 @@ msgstr "Mahsulot"
 msgid "Products "
 msgstr "Mahsulotlar "
 
-#: .\project\settings.py:122
+#: .\project\settings.py:123
 msgid "English"
 msgstr "Inglizcha"
 
-#: .\project\settings.py:123
+#: .\project\settings.py:124
 msgid "Uzbek"
 msgstr "O'zbekcha"
 
-#: .\templates\category.html:19 .\templates\home.html:20
-#: .\templates\navbar.html:30
+#: .\templates\cart.html:11
+msgid "Your bought products count :"
+msgstr "Olgan mahsulotlarning soni: "
+
+#: .\templates\cart.html:12
+msgid "Sale"
+msgstr "Umumiy narx"
+
+#: .\templates\cart.html:28 .\templates\category.html:19
+#: .\templates\home.html:20 .\templates\navbar.html:31
 msgid "Catalogs"
 msgstr "Kataloglar"
 
-#: .\templates\category.html:30 .\templates\home.html:30
+#: .\templates\cart.html:38 .\templates\category.html:30
+#: .\templates\home.html:30
 msgid "More"
 msgstr "Batafsil"
+
+#: .\templates\cart.html:39
+msgid "Remove"
+msgstr "O'chirish"
 
 #: .\templates\category.html:31 .\templates\home.html:31
 #: .\templates\products.html:53
 msgid "Buy"
 msgstr "Sotib olmoq"
 
-#: .\templates\navbar.html:24
-msgid "Main"
-msgstr "Asosiy sahifa"
-
-#: .\templates\navbar.html:50
-msgid "Languages"
-msgstr "Tilni o'zgartirish"
-
-#: .\templates\navbar.html:74
-msgid "Logout"
-msgstr "Chiqish"
-
-#: .\templates\navbar.html:76
-msgid "Register"
-msgstr "Ro'yxatdan o'tish"
-
-#: .\templates\navbar.html:77
+#: .\templates\login.html:4 .\templates\login.html:39
+#: .\templates\navbar.html:85
 msgid "Login"
 msgstr "Kirish"
 
-#: .\templates\pagination.html:14
+#: .\templates\navbar.html:25
+msgid "Main"
+msgstr "Asosiy sahifa"
+
+#: .\templates\navbar.html:51
+msgid "Languages"
+msgstr "Tilni o'zgartirish"
+
+#: .\templates\navbar.html:79
+msgid "Logout"
+msgstr "Chiqish"
+
+#: .\templates\navbar.html:82 .\templates\register.html:4
+#: .\templates\register.html:36
+msgid "Register"
+msgstr "Ro'yxatdan o'tish"
+
+#: .\templates\pagination.html:17 .\templates\pagination.html:21
 msgid "Previous"
 msgstr "Orqaga"
 
-#: .\templates\pagination.html:20
+#: .\templates\pagination.html:29 .\templates\pagination.html:33
 msgid "Next"
 msgstr "Oldinga"
 

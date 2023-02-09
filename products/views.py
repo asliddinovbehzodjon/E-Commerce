@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from urllib.parse import urlparse
 from django.conf import settings
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect,JsonResponse
 from django.urls.base import resolve, reverse
 from django.urls.exceptions import Resolver404
 from django.utils import translation
@@ -11,7 +11,30 @@ from django.contrib.auth.models import User
 from .models import *
 from django.contrib.auth import authenticate, login, logout
 # #############################################
+def mycart(request):
+    if request.user.is_authenticated:
+       order,created = Order.objects.get_or_create(user=request.user)
+       items_count = order.all_products 
+       all_price = order.all_price
+       products = order.all_mahsulot
+       paginated_products = Paginator(products, 1)
+       page = request.GET.get('page', 1)
+       products = paginated_products.page(page)
+    else:
+        items_count = 0
+        all_price = 0
+        products = []
+    context = {
+        'items_count':items_count,
+        'all_price':all_price,
+        'products':products
+    }
+    return render(request,'cart.html',context)
 def home(request):
+    items_count = 0
+    if request.user.is_authenticated:
+       order,created = Order.objects.get_or_create(user=request.user)
+       items_count = order.all_products
     categories = Category.objects.all()
     try:
         products_list = Product.objects.all()
@@ -22,20 +45,30 @@ def home(request):
         return redirect('/')
     context = {
         'categories':categories,
-        'products':products
+        'products':products,
+        'items_count':items_count
     }
     return render(request,'home.html',context=context)
 def product_detail(request,id):
+    items_count = 0
+    if request.user.is_authenticated:
+        order, created = Order.objects.get_or_create(user=request.user)
+        items_count = order.all_products
     product = Product.objects.get(id =id)
     albums = Album.objects.filter(product=product)
     categories = Category.objects.all()
     context = {
         'categories':categories,
         'product':product,
-        'albums':albums
+        'albums':albums,
+        'items_count':items_count
     }
     return render(request,'products.html',context=context)
 def category_detail(request,id):
+    items_count = 0
+    if request.user.is_authenticated:
+        order, created = Order.objects.get_or_create(user=request.user)
+        items_count = order.all_products
     category = Category.objects.get(id=id)
     categories = Category.objects.all()
     try:
@@ -49,6 +82,7 @@ def category_detail(request,id):
         'category':category,
         'products':products,
         'categories':categories,
+        'items_count':items_count
        
     }
     return render(request,'category.html',context=context)
@@ -101,3 +135,21 @@ def set_language(request, language):
     else:
         response = HttpResponseRedirect("/")
     return response
+###### update cart ##########
+def update(request):
+    import json
+    data = json.loads(request.body)
+    productId = data['productId']
+    action = data['action']
+    user = request.user
+    product = Product.objects.get(id=productId)
+    order, created = Order.objects.get_or_create(user=user)
+    orderitem, created = OrderItem.objects.get_or_create(order=order, product=product)
+    if action == 'add':
+        orderitem.quantity = (orderitem.quantity + 1)
+    elif action == 'remove':
+        orderitem.quantity = (orderitem.quantity - 1)
+    orderitem.save()
+    if orderitem.quantity <= 0:
+        orderitem.delete()
+    return JsonResponse('Mahsulot qoshildi', safe=False)

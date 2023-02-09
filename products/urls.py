@@ -6,5 +6,7 @@ urlpatterns = [
     path('category/<int:id>/',category_detail),
     path('register',registerpage,name='register'),
     path('login',loginpage,name='login'),
-    path('logout',logoutUser)
+    path('logout',logoutUser),
+    path('update_item/',update),
+    path('cart',mycart)
 ]

@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load static %}
 {% get_available_languages as LANGUAGES %}
 {% get_current_language as LANGUAGE_CODE %}
 <!DOCTYPE html>
@@ -56,18 +57,22 @@
                        
                           {% for language in languages  %}
                           <li><a class="dropdown-item" href="/{{language.code}}{{request.get_full_path|slice:'3:'}}">{{language.name_translated}}</a></li>
-                          {% endfor %}
-                            
-                          
-                         
-                          
-                              
-                       
-                        
+                          {% endfor %}         
                       </ul>
                     </li>
                     
                   </ul>
+                  <a class="position-relative icon-me" href="cart">
+                    <img class="cart-icon" src="{% static 'images/cart.png' %}" alt="">
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                      {% if items_count %}
+                        {{items_count}}
+                        {% else %}
+                        0
+                        {% endif %}
+                      
+                    </span>
+                  </a>
                  
                   {% if request.user.is_authenticated %}
                  
@@ -99,6 +104,14 @@
         .mybtn{
           margin:0 10px;
           border-radius: 15px;
+        }
+        .cart-icon{
+          width: 30px;
+          margin:0 10px;
+          height: 30px;
+        }
+        .icon-me{
+          margin: 5px 18px;
         }
     </style>
    

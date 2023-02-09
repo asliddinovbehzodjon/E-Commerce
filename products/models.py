@@ -43,6 +43,10 @@ class Order(models.Model):
         paketlar = self.paket.all()
         return sum([i.quantity for i in paketlar])
     @property
+    def all_mahsulot(self):
+        paketlar  = self.paket.all()
+        return [i.mahsulot for i in paketlar]
+    @property
     def all_price(self):
         paketlar = self.paket.all()
         return sum([i.xarid for i in paketlar])
@@ -53,6 +57,9 @@ class OrderItem(models.Model):
     quantity = models.IntegerField(default=1)
     def __str__(self):
         return f"{self.order} ning xaridi!"
+    @property
+    def mahsulot(self):
+        return self.product
     @property
     def narx(self):
         return self.product.price
