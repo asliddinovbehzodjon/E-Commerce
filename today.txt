@@ -1,0 +1,9 @@
+Q
+F
+aggregation
+annotion
+Max Sum Avg Count
+Table:
+user
+xat: shikoyat,rahmat,ariza
+body 

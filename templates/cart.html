@@ -16,38 +16,63 @@
     <div class="container">
         <div class="row">
          
-         {% for product in products %}
+         {% for item in products %}
+       
          <div class="col-sm-3">
-            <div class="card" style="width: 18rem;">
-        <img src="{{product.image.url}}" class="card-img-top" alt="...">
+            <div class="card position-relative" style="width: 18rem;">
+        <img src="{{item.product.image.url}}" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title"><i class="fa-brands fa-product-hunt"></i> &nbsp;{{product.name}}</h5>
-                  <p class="card-text"><i class="fa-solid fa-wallet"></i> &nbsp;{{product.price}} $</p>
-                  <p class="card-text"><i class="fa-sharp fa-solid fa-circle-info"></i> &nbsp;{{product.description|truncatechars:40}}</p>
+                  <h5 class="card-title"><i class="fa-brands fa-product-hunt"></i> &nbsp;{{item.product.name}}</h5>
+                  <p class="card-text"><i class="fa-solid fa-wallet"></i> &nbsp;{{item.product.price}} $</p>
+                  <p class="card-text"><i class="fa-sharp fa-solid fa-circle-info"></i> &nbsp;{{item.product.description|truncatechars:40}}</p>
                   <center>
                     <span class="card-text">{% trans 'Catalogs' %}</span><br>
                   </center>
                   <ol class="mt-3">
                     
-                    {% for category in product.category.all  %}
+                    {% for category in item.product.category.all  %}
                     
                       <a style="text-decoration: none;" href="{{LANGUAGE_CODE}}/category/{{category.id}}/"><li >{{category}}</li></a>
                     {% endfor %}
                       
-                  </ul> <br>
+                  </ol> <br>
                   <a href="/product/{{product.id}}/" class="btn btn-primary">{% trans 'More' %}</a>
-                  <a  class="update-cart btn btn-primary" data-product="{{product.id}}" data-action="remove">{% trans 'Remove' %}</a>
+                  <a  class="update-cart btn btn-primary" data-product="{{item.product.id}}" data-action="remove">{% trans 'Remove' %}</a>
                 </div>
+                <span class="quantity">
+                  {{item.quantity}}
+                </span>
               </div>
-        </div>
+        
+              
+            </div>
          {% endfor %}
             
           
         </div>
       </div>
-   {% if products %}
-   {% include 'pagination.html' %}
-   {% endif %}
+      <style>
+        .card{
+          position: relative;
+        }
+        .card{
+          border-radius: 10px;
+          background-color: aliceblue;
+          width: 150px;
+          min-height: 450px;
+        }
+        .quantity{
+          border: 2px solid crimson;
+          color: #fff;
+          background: crimson;
+          padding: 5px 10px;
+          border-radius: 10px;
+          position: absolute;
+          top: -10px;
+          right: -20px;
+        }
+        
+      </style>
     <script>
         function getToken(name) {
           var cookieValue = null;

@@ -25,22 +25,24 @@
                     {% trans 'Main' %}
                 </a>
               </li>
-              
+              {% if categories %}
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   {% trans 'Catalogs' %}
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              
+               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     
-                    {% for category in categories  %}
-                    <li><a class="dropdown-item" href="/{{LANGUAGE_CODE}}/category/{{category.id}}/">{{category.name}}</a></li>
-                    {% endfor %}
-                        
-                 
-                  
-                </ul>
-              </li>
+                {% for category in categories  %}
+                <li><a class="dropdown-item" href="/{{LANGUAGE_CODE}}/category/{{category.id}}/">{{category.name}}</a></li>
+                {% endfor %}
+                    
              
+              
+            </ul>
+              
+              </li>
+              {% endif %}
             </ul>
             <form class="d-flex">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">

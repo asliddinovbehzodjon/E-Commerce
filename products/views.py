@@ -5,21 +5,19 @@ from django.http import HttpResponseRedirect,JsonResponse
 from django.urls.base import resolve, reverse
 from django.urls.exceptions import Resolver404
 from django.utils import translation
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
 from django.contrib import messages
 from django.contrib.auth.models import User
 from .models import *
 from django.contrib.auth import authenticate, login, logout
 # #############################################
 def mycart(request):
+    categories = Category.objects.all()
     if request.user.is_authenticated:
        order,created = Order.objects.get_or_create(user=request.user)
        items_count = order.all_products 
        all_price = order.all_price
-       products = order.all_mahsulot
-       paginated_products = Paginator(products, 1)
-       page = request.GET.get('page', 1)
-       products = paginated_products.page(page)
+       products = order.paket.all()
     else:
         items_count = 0
         all_price = 0
@@ -27,7 +25,8 @@ def mycart(request):
     context = {
         'items_count':items_count,
         'all_price':all_price,
-        'products':products
+        'products':products,
+        'categories':categories
     }
     return render(request,'cart.html',context)
 def home(request):
@@ -38,7 +37,7 @@ def home(request):
     categories = Category.objects.all()
     try:
         products_list = Product.objects.all()
-        paginated_products = Paginator(products_list, 1)
+        paginated_products = Paginator(products_list, 8)
         page = request.GET.get('page', 1)
         products = paginated_products.page(page)
     except:
@@ -54,6 +53,7 @@ def product_detail(request,id):
     if request.user.is_authenticated:
         order, created = Order.objects.get_or_create(user=request.user)
         items_count = order.all_products
+
     product = Product.objects.get(id =id)
     albums = Album.objects.filter(product=product)
     categories = Category.objects.all()
@@ -87,6 +87,12 @@ def category_detail(request,id):
     }
     return render(request,'category.html',context=context)
 def loginpage(request):
+    items_count= 0
+    if request.user.is_authenticated:
+        order, created = Order.objects.get_or_create(user=request.user)
+        items_count = order.all_products
+
+
     if request.method=='POST':
         username=request.POST['username']
         psw1=request.POST['psw1']
@@ -96,12 +102,19 @@ def loginpage(request):
            return redirect('/')
         else:
             messages.error(request,"Username or Password incorrect!") 
-            return redirect('/login') 
-    return render(request,'login.html')
+            return redirect('/login')
+    context = {
+        'items_count':items_count
+    }
+    return render(request,'login.html',context)
 def logoutUser(request):
     logout(request)
     return redirect('/login')
 def registerpage(request):
+    items_count =0
+    if request.user.is_authenticated:
+        order,created = Order.objects.get_or_create(user=request.user)
+        items_count = order.all_products
     if request.method=='POST':
         username=request.POST['username']
         psw1=request.POST['psw1']
@@ -115,8 +128,11 @@ def registerpage(request):
         else:
             User.objects.create_user(username=username,password=psw1)
             messages.success(request,"Profile created!")
-            return redirect('/login') 
-    return render(request,'register.html')    
+            return redirect('/login')
+    context = {
+        'items_count':items_count
+    }
+    return render(request,'register.html',context)
 # Create your views here.
 def set_language(request, language):
     for lang, _ in settings.LANGUAGES:
